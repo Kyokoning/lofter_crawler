@@ -20,7 +20,7 @@
 2. 根据需要修改`config/test.yaml`配置文件
 
 配置选项|默认值|描述
--------|:----:|-------:
+:-------:|:----:|-------
 OUTPUT_DIR|output/|保存存档的地址
 TYPE|tag|脚本运行模式，可选项有tag和USER，可以保存tag和保存user的blog
 TAG|    |如果选择了tag运行模式，那么目标tag
