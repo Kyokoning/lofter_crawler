@@ -43,14 +43,14 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 
 ①User模式（[白的毛熊太太的lofter](coldiron.lofter.com/)）
 
-![image.png](https://i.loli.net/2020/06/13/cJVedgBUXx6rFQ3.png)
+![image.png](https://i.loli.net/2020/06/13/cJVedgBUXx6rFQ3.png){:height="50%" width="50%"}
 
-![image.png](https://i.loli.net/2020/06/13/fXuybjWVKoerRSH.png)
+![image.png](https://i.loli.net/2020/06/13/fXuybjWVKoerRSH.png){:height="50%" width="50%"}
 
 ②tag模式（爬了一下几百年前的冷圈墙头然后发现已经没有我cp的东西了
 
 tag的问题是lofter tag学里面的一个小问题，参与tag数是不算后面加入的tag，所以爬虫爬下来会少（测试了一432参与的tag，实际爬完是338）
 
-![image.png](https://i.loli.net/2020/06/13/n3vO7tfBC8cFGSm.png)
+![image.png](https://i.loli.net/2020/06/13/n3vO7tfBC8cFGSm.png){:height="50%" width="50%"}
 
-![image.png](https://i.loli.net/2020/06/13/QoGdXc9snYagPwm.png)
+![image.png](https://i.loli.net/2020/06/13/QoGdXc9snYagPwm.png){:height="50%" width="50%"}
