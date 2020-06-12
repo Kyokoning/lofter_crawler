@@ -1,0 +1,40 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*$py.class
+*/__pycache__
+
+# C extension
+*.so
+## local file
+test.log
+output
+.idea

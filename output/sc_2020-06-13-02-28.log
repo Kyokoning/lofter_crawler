@@ -1,0 +1,19 @@
+2020-06-13 02:28:53,834 EXTRA:
+  TIME_STAMP: True
+OUTPUT_DIR: output
+TAG: sc
+TARGET:
+  ARTICAL: True
+  HOT_THRE: 0
+  PICTURE: True
+  TAG_MINUS: []
+  TAG_PLUS: []
+  TITLE: []
+TYPE: tag
+USER: coldiron
+2020-06-13 02:28:54,138 => The blog id of coldiron is: 3184791
+2020-06-13 02:28:54,139 => start !
+2020-06-13 02:28:54,218 ================
+2020-06-13 02:28:54,219 => capture complete
+2020-06-13 02:28:54,219 => totle blogs: 0
+2020-06-13 02:28:54,219 ________________

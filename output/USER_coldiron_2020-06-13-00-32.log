@@ -1,0 +1,30 @@
+2020-06-13 00:32:40,991 EXTRA:
+  TIME_STAMP: True
+OUTPUT_DIR: output
+TAG: sc
+TARGET:
+  ARTICAL: True
+  HOT_THRE: 0
+  PICTURE: True
+  TAG_MINUS: []
+  TAG_PLUS: ['sc']
+  TITLE: []
+TYPE: USER
+USER: coldiron
+2020-06-13 00:32:41,233 => The blog id of coldiron is: 3184791
+2020-06-13 00:32:41,233 => start !
+2020-06-13 00:32:41,343 => NewBlog:40	TotalBlogs:40
+2020-06-13 00:32:43,821 => success write output/[白的毛熊]图片_309897_1c9771faf.html
+2020-06-13 00:32:45,416 => success write output/[白的毛熊]然后天空又再涌起密云_309897_1c94ac883.html
+2020-06-13 00:32:51,626 => The next Time stamp is: 1565520507234
+2020-06-13 00:32:56,740 => NewBlog:40	TotalBlogs:80
+2020-06-13 00:33:06,686 => The next Time stamp is: 1508757410233
+2020-06-13 00:33:11,821 => NewBlog:40	TotalBlogs:120
+2020-06-13 00:33:20,871 => The next Time stamp is: 1435254695916
+2020-06-13 00:33:24,077 => NewBlog:40	TotalBlogs:160
+2020-06-13 00:33:33,377 => The next Time stamp is: 1407293676560
+2020-06-13 00:33:37,537 => NewBlog:22	TotalBlogs:182
+2020-06-13 00:33:42,420 ================
+2020-06-13 00:33:42,420 => capture complete
+2020-06-13 00:33:42,421 => totle blogs: 182
+2020-06-13 00:33:42,422 ________________
