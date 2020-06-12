@@ -38,3 +38,6 @@ __pycache__/
 test.log
 output
 .idea
+tool/__pycache__/
+tool/.DS_Store
+lib/__pycache__
