@@ -7,7 +7,7 @@
 - 根据提供的lofter id保存所有blog
 - 根据提供的lofter tag保存所有tag条目下可见的blog（会比tag显示参与数小）
 
-联系我：@[黑化养乐多](weibo.com/2124977484)
+联系我：<a href="weibo.com/2124977484" target="_blank">微博</a>
 
 不要用本项目代码做不好的事情！
 
@@ -41,7 +41,7 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 
 ## 运行示例
 
-①User模式（[白的毛熊太太的lofter](coldiron.lofter.com/)）
+①User模式（<a href="coldiron.lofter.com/" target="_blank">白的毛熊</a>）
 
 ![image.png](https://i.loli.net/2020/06/13/cJVedgBUXx6rFQ3.png)
 
