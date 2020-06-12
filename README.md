@@ -23,9 +23,9 @@
 -------|:----:|-------:
 OUTPUT_DIR|output/|保存存档的地址
 TYPE|tag|脚本运行模式，可选项有tag和USER，可以保存tag和保存user的blog
-TAG| |如果选择了tag运行模式，那么目标tag
-USER| |如果选择了USER运行模式，那么目标user
-    |target细节部分|     
+TAG|    |如果选择了tag运行模式，那么目标tag
+USER|   |如果选择了USER运行模式，那么目标user
+------|target细节部分|------ 
 PICTURE|true|blog是图片的话是否保存
 ARTICAL|true|blog是文章的话是否保存
 HOT_THRE|0|高于多少热度的文章被保存
