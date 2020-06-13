@@ -10,10 +10,10 @@ _C.OUTPUT_DIR = ''
 # tag模式'tag'/个人主页模式'USER'/个人喜欢模式'USER_LIKE'
 _C.TYPE = 'tag'
 # tag模式：保存目标tag中符合要求的blog
-_C.TAG = ''
+_C.TAG = []
 # 个人主页模式：保存提供的个人主页中符合要求的blog
 # 个人喜欢模式：保存提供的个人喜欢中符合要求的blog
-_C.USER = 'coldiron'
+_C.USER = []
 
 # —— target：picture、article、热度多少以上、文章标题、tag(含有tag、不含有tag）
 _C.TARGET = CN()

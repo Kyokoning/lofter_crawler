@@ -104,13 +104,13 @@ def _capture_blog(headers, url, hot_number, cfg):
     elif artical_pattern.findall(html)[0] == 'Content-Type' or artical_pattern.findall(html)[0] == 'content-type':
         artical_type = True
 
-    title_pattern = re.compile('<title>(.*?)</title>')
-    title_pattern_aux = re.compile('<title>(.*?)\\n')
-    title = title_pattern.findall(html)
-    if not title:
-        title = title_pattern_aux.findall(html)[0]
-    else:
-        title = title[0]
+    title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
+    title = title_pattern.findall(html)[0].replace('\n', '')
+    title = title.replace('/', '\\')
+    blog_author = title.split('-')[-1]
+    blog_title = "".join(title.split('-')[:-1])
+
+
 
     tag_pattern = re.compile('<meta name="Keywords" content="(.*?)"')
     tag_list = tag_pattern.findall(html)[0].split(',')
@@ -119,7 +119,7 @@ def _capture_blog(headers, url, hot_number, cfg):
     if not hot_number or int(hot_number) < cfg.TARGET.HOT_THRE:
         return 0
     for want_title in cfg.TARGET.TITLE:
-        if not want_title in title:
+        if not want_title in blog_title:
             return 0
     for tag_plus in cfg.TARGET.TAG_PLUS:
         if not tag_plus.lower() in [x.lower() for x in tag_list]:
@@ -128,27 +128,24 @@ def _capture_blog(headers, url, hot_number, cfg):
         if tag_minus in tag_list:
             return 0
     blog_id = url.split('/')[-1]
-    title = title.replace('/', '\\')
-    blog_author = title.split('-')[-1]
-    blog_title = "".join(title.split('-')[:-1])
     output_file_name = os.path.join(cfg.OUTPUT_DIR, '['+blog_author+']'+blog_title+'_'+blog_id+'.html')
     with open(output_file_name, 'w') as f:
         f.write(html)
         logger.info('=> success write {}'.format(output_file_name))
 
-def person_blog(cfg):
-    blogid = _get_blog_id(cfg.USER)
+def person_blog(cfg, user):
+    blogid = _get_blog_id(user)
     query_number = 40
     time_pattern = re.compile('s%d\.time=(.*);s.*type' % (query_number-1))
     blog_url_pattern = re.compile(r's[\d]*\.permalink="([\w_]*)"')
     hot_pattern = re.compile('s[\d]*.noteCount=(\d*)')
 
-    POST_url = 'http://%s.lofter.com/dwr/call/plaincall/ArchiveBean.getArchivePostByTime.dwr' % cfg.USER
+    POST_url = 'http://%s.lofter.com/dwr/call/plaincall/ArchiveBean.getArchivePostByTime.dwr' % user
     # 这是个人归档在下滑的时候的POST请求包
 
     POST_payload = _create_query_data(cfg.TYPE, blogid, _get_timestamp(cfg.TYPE, None, time_pattern), str(query_number))
 
-    headers = _create_headers(cfg.USER)
+    headers = _create_headers(user)
 
     num_blogs = 0
     logger.info('=> start !')
@@ -162,7 +159,7 @@ def person_blog(cfg):
         if num_new_blogs:
             logger.info("=> NewBlog:{}\tTotalBlogs:{}".format(num_new_blogs, num_blogs))
             for blog, hot in zip(new_blogs, blogs_hot):
-                url = 'http://%s.lofter.com/post/%s' % (cfg.USER, blog)
+                url = 'http://%s.lofter.com/post/%s' % (user, blog)
                 _capture_blog(headers, url, hot, cfg)
         if num_new_blogs != query_number:
             logger.info('================')
@@ -176,24 +173,24 @@ def person_blog(cfg):
         time.sleep(random.randint(0,2))
 
 
-def save_tag(cfg):
+def save_tag(cfg, tag):
     query_number = 20
     time_pattern = re.compile('publishTime=(.*?);s[\d]*.publisher')
     blog_url_pattern = re.compile('blogPageUrl="(.*?)"')
     hot_pattern = re.compile('postHot=(.*?);')
     user_pattern = re.compile('https://(.*?).lofter')
-    tag_url = 'http://www.lofter.com/tag/{}'.format(cfg.TAG)
+    tag_url = 'http://www.lofter.com/tag/{}'.format(tag)
 
     POST_url = 'http://www.lofter.com/dwr/call/plaincall/TagBean.search.dwr'
     tag_count = 0
     POST_payload = _create_query_data(cfg.TYPE,
-                                      cfg.TAG,
+                                      tag,
                                       _get_timestamp(cfg.TYPE, None, time_pattern),
                                       query_number,
                                       tag_count)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36',
-        'Referer': 'http://www.lofter.com/tag/{}?from=tagsearch'.format(cfg.TAG.upper()),
+        'Referer': 'http://www.lofter.com/tag/{}?from=tagsearch'.format(tag.upper()),
         'Accept-Encoding': 'gzip, deflate',
         'Host': 'www.lofter.com'
     }

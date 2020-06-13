@@ -4,7 +4,7 @@ import os
 def create_logger(cfg):
     time_str = str(time.strftime('%Y-%m-%d-%H-%M'))
     if cfg.TYPE=='tag':
-        log_file_name = '{}_{}.log'.format(cfg.TAG, time_str)
+        log_file_name = 'tag_{}_{}.log'.format(cfg.TAG, time_str)
     elif cfg.TYPE == 'USER':
         log_file_name = 'USER_{}_{}.log'.format(cfg.USER, time_str)
     elif cfg.TYPE == 'USER_LIKE':

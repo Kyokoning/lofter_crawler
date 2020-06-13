@@ -28,5 +28,13 @@ if __name__=='__main__':
     logger, _ = create_logger(cfg)
     logger.info(cfg)
 
-    save_tag(cfg)
+    if cfg.TYPE == 'tag':
+        for tag in cfg.TAG:
+            save_tag(cfg, str(tag))
+    elif cfg.TYPE == 'USER':
+        for user in cfg.USER:
+            person_blog(cfg, str(user))
+    else:
+        logger.info('=> failed in cfg TYPE. Please enter correct configure.')
+
 
