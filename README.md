@@ -23,11 +23,11 @@ todo list
 
 ## Quick Start
 
-1. 安装依赖：
+#### 1. 安装依赖：
 
 `pip install -r requirements.txt`
 
-2. 根据需要修改`config/test.yaml`配置文件
+#### 2. 根据需要修改`config/test.yaml`配置文件
 
 配置选项|默认值|描述|示例
 :-------:|:----:|-------|----
@@ -43,7 +43,7 @@ TITLE| [] |标题中有什么内容的会被保存，这是list格式的配置�
 TAG_PLUS| [] |文章的tag中要有什么才会被保存。同样是list格式配置| \['三十天挑战'\]
 TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list格式配置 | \['游戏截图', '日常'\]
 
-3. 运行脚本
+#### 3. 运行脚本
 
 `python tool/crawler.py --cfg config/test.yaml`
 
@@ -67,8 +67,6 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
     432参与，实际爬得338
 
 参与tag数是不算后面加入的tag，所以爬虫爬下来会少（测试了一432参与的tag，实际爬完是338）
-
-![image.png](https://i.loli.net/2020/06/13/n3vO7tfBC8cFGSm.png)
 
 测试tag2：sc
 
