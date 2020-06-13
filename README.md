@@ -35,8 +35,7 @@ OUTPUT_DIR|output/|保存存档的地址(绝对地址/相对地址都ok)|output/
 TYPE|tag|脚本运行模式，可选项有tag和USER，可以保存tag和保存user的blog|'tag'
 TAG|[]|如果选择了tag运行模式，那么在括号里填入目标tag|\['tag1', 'tag2'\]
 USER|[]|如果选择了USER运行模式，那么目标user|\['user1', 'user2'\]
-
-------|target细节部分|-------|-------
+------|target细节部分|-----------------|-------
 PICTURE|true|blog是图片的话是否保存|true
 ARTICAL|true|blog是文章的话是否保存|true
 HOT_THRE|0|高于多少热度的文章被保存|50
