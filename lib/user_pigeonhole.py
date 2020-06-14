@@ -129,7 +129,7 @@ def _capture_blog(headers, url, hot_number, cfg):
             return 0
     blog_id = url.split('/')[-1]
     output_file_name = os.path.join(cfg.OUTPUT_DIR, '['+blog_author+']'+blog_title+'_'+blog_id+'.html')
-    with open(output_file_name, 'w') as f:
+    with open(output_file_name, 'w', encoding='utf-8') as f:
         f.write(html)
         logger.info('=> success write {}'.format(output_file_name))
 

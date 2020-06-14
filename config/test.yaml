@@ -1,13 +1,13 @@
-OUTPUT_DIR: output/sc
+OUTPUT_DIR: output/
 TYPE: USER
 TAG: []
-USER: [897737302]
+USER: []
 
 TARGET:
   PICTURE: true
   ARTICAL: true
   HOT_THRE: 50
   TITLE: []
-  TAG_PLUS: ['sc']
+  TAG_PLUS: []
   TAG_MINUS: []
 
