@@ -16,6 +16,7 @@ todo list
 
 - 根据lofter id保存用户所有喜欢的blog
 - 还在梦里的的GUI界面
+- 智能助手抓取每日tag新增并整理为blog格式发送
 
 联系我：微博@黑化栈溢出
 
@@ -27,7 +28,9 @@ todo list
 
 `pip install -r requirements.txt`
 
-#### 2. 根据需要修改`config/test.yaml`配置文件
+#### 2. 根据需要修改配置文件
+
+使用任何文本编辑器打开`config/test.yaml`，修改配置。配置细节在下表列出。
 
 配置选项|默认值|描述|示例
 :-------:|:----:|-------|----
@@ -54,7 +57,9 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 
 ## 运行示例
 
-#### ①User模式（白的毛熊：https://coldiron.lofter.com/）
+#### ①User模式
+
+测试blog：白的毛熊：https://coldiron.lofter.com/
 
 ![image.png](https://i.loli.net/2020/06/13/cJVedgBUXx6rFQ3.png)
 
@@ -66,7 +71,7 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 
     432参与，实际爬得338
 
-参与tag数是不算后面加入的tag，所以爬虫爬下来会少（测试了一432参与的tag，实际爬完是338）
+    参与tag数是不算后面加入的tag，所以爬虫爬下来会少
 
 测试tag2：sc
 

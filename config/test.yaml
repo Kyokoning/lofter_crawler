@@ -1,6 +1,6 @@
 OUTPUT_DIR: output/
-TYPE: USER
-TAG: []
+TYPE: tag
+TAG: ['sc']
 USER: []
 
 TARGET:
