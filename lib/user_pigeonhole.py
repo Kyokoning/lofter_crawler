@@ -97,6 +97,8 @@ def _get_html(url, data, headers):
 
 def _capture_blog(headers, url, hot_number, cfg):
     html = requests.get(url, headers).text
+
+
     print(url)
 
     artical_pattern = re.compile('http-equiv="(.*?)"') # 等于'Content-Type'才能说明是文章
@@ -107,14 +109,14 @@ def _capture_blog(headers, url, hot_number, cfg):
 
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
     title = title_pattern.findall(html)[0].replace('\n', '')
+    user_pattern = re.compile('https://(.*?).lofter')
     if sys.platform == 'darwin' or 'linux' in sys.platform:
         title = title.replace('/', '\\')
     elif 'win' in sys.platform:
-        title = title.replace('\', '/'')
+        title = re.sub(r"[\/\\\:\*\?\"\<\>\|]", '_', title)
     else:
         logger.error('=> fail in determine your platform')
-    blog_author = title.split('-')[-1]
-    blog_title = "".join(title.split('-')[:-1])
+    blog_author = user_pattern.findall(url)[0]
 
     tag_pattern = re.compile('<meta name="Keywords" content="(.*?)"')
     tag_list = tag_pattern.findall(html)[0].split(',')
@@ -123,7 +125,7 @@ def _capture_blog(headers, url, hot_number, cfg):
     if not hot_number or int(hot_number) < cfg.TARGET.HOT_THRE:
         return 0
     for want_title in cfg.TARGET.TITLE:
-        if not want_title in blog_title:
+        if not want_title in title:
             return 0
     for tag_plus in cfg.TARGET.TAG_PLUS:
         if not tag_plus.lower() in [x.lower() for x in tag_list]:
@@ -132,7 +134,7 @@ def _capture_blog(headers, url, hot_number, cfg):
         if tag_minus in tag_list:
             return 0
     blog_id = url.split('/')[-1]
-    output_file_name = os.path.join(cfg.OUTPUT_DIR, '['+blog_author+']'+blog_title+'_'+blog_id+'.html')
+    output_file_name = os.path.join(cfg.OUTPUT_DIR, '['+blog_author+']'+title+'_'+blog_id+'.html')
     with open(output_file_name, 'w', encoding='utf-8') as f:
         f.write(html)
         logger.info('=> success write {}'.format(output_file_name))

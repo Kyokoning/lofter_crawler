@@ -46,6 +46,9 @@ TITLE| [] |标题中有什么内容的会被保存，这是list格式的配置�
 TAG_PLUS| [] |文章的tag中要有什么才会被保存。同样是list格式配置| \['三十天挑战'\]
 TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list格式配置 | \['游戏截图', '日常'\]
 
+    需要注意的是，lofter id指的是网页版博客网址上的个人id，以https://coldiron.lofter.com/为例，则该blog的id为coldiron
+    lofter的blog名是自定义的，可以重名，但是lofter id是各不相同的。
+
 #### 3. 运行脚本
 
 `python tool/crawler.py --cfg config/test.yaml`
@@ -53,7 +56,7 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 结果会产生很多html文件和一个log文件
 
 - log文件的名字是`TYPE`-`name/id`-时间.log
-- blog保存格式为html，名字是\[`blog作者名`\] `blog标题`_`lofter相对地址`.html
+- blog保存格式为html，名字是\[`blogid`\] `blog标题`-`blog作者名`_`lofter相对地址`.html
 
 ## 运行示例
 
