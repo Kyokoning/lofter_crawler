@@ -3,6 +3,7 @@ import re
 import logging
 import time
 import os
+import sys
 import random
 logger = logging.getLogger(__name__)
 
@@ -106,11 +107,14 @@ def _capture_blog(headers, url, hot_number, cfg):
 
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
     title = title_pattern.findall(html)[0].replace('\n', '')
-    title = title.replace('/', '|')
+    if sys.platform == 'darwin' or 'linux' in sys.platform:
+        title = title.replace('/', '\\')
+    elif 'win' in sys.platform:
+        title = title.replace('\', '/'')
+    else:
+        logger.error('=> fail in determine your platform')
     blog_author = title.split('-')[-1]
     blog_title = "".join(title.split('-')[:-1])
-
-
 
     tag_pattern = re.compile('<meta name="Keywords" content="(.*?)"')
     tag_list = tag_pattern.findall(html)[0].split(',')
