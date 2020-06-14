@@ -106,7 +106,7 @@ def _capture_blog(headers, url, hot_number, cfg):
 
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
     title = title_pattern.findall(html)[0].replace('\n', '')
-    title = title.replace('/', '\\')
+    title = title.replace('/', '|')
     blog_author = title.split('-')[-1]
     blog_title = "".join(title.split('-')[:-1])
 
