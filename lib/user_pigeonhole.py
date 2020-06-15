@@ -5,6 +5,7 @@ import time
 import os
 import sys
 import random
+from urllib.parse import quote
 logger = logging.getLogger(__name__)
 
 def _get_blog_id(username):
@@ -189,6 +190,7 @@ def save_tag(cfg, tag):
 
     POST_url = 'http://www.lofter.com/dwr/call/plaincall/TagBean.search.dwr'
     tag_count = 0
+    tag = quote(tag)
     POST_payload = _create_query_data(cfg.TYPE,
                                       tag,
                                       _get_timestamp(cfg.TYPE, None, time_pattern),
