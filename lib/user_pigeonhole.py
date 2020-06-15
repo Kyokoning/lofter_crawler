@@ -98,8 +98,12 @@ def _get_html(url, data, headers):
     return html
 
 def _capture_blog(headers, url, hot_number, cfg):
-    html = requests.get(url, headers).text
     print(url)
+    try:
+        html = requests.get(url, headers, timeout=7).text
+    except Exception as e:
+        logger.error('=> get blog html failed.\n{}'.format(str(e)))
+        return 0
 
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
     title = unescape(title_pattern.findall(html)[0].replace('\n', ''))
