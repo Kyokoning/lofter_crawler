@@ -79,3 +79,11 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
 测试tag2：sc
 
 ![范例.gif](https://i.loli.net/2020/06/13/IY3E6POxaMuemD7.gif)
+
+测试tag3：韩叶
+
+    主要测试了一下脚本爬取速度，这和各种因素都有关，脚本内也有设置随机睡眠时间。
+    
+    10min~2000tag
+    
+    

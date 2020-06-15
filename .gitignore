@@ -41,3 +41,4 @@ output
 tool/__pycache__/
 tool/.DS_Store
 lib/__pycache__
+config/test_local.yaml
