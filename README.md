@@ -86,4 +86,4 @@ TAG_MINUS| [] |如果文章的tag有什么，就不会被保存。同样是list�
     
     10min~2000tag
     
-    
+    据说如果爬到1w tag会出现lofter的反爬机制，尝试希望。
