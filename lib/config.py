@@ -17,8 +17,6 @@ _C.USER = []
 
 # —— target：picture、article、热度多少以上、文章标题、tag(含有tag、不含有tag）
 _C.TARGET = CN()
-_C.TARGET.PICTURE = True
-_C.TARGET.ARTICAL = True
 _C.TARGET.HOT_THRE = 0
 _C.TARGET.TITLE = []
 _C.TARGET.TAG_PLUS = []

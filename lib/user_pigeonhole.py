@@ -6,6 +6,7 @@ import os
 import sys
 import random
 from urllib.parse import quote
+from html import unescape
 logger = logging.getLogger(__name__)
 
 def _get_blog_id(username):
@@ -98,18 +99,10 @@ def _get_html(url, data, headers):
 
 def _capture_blog(headers, url, hot_number, cfg):
     html = requests.get(url, headers).text
-
-
     print(url)
 
-    artical_pattern = re.compile('http-equiv="(.*?)"') # 等于'Content-Type'才能说明是文章
-    if not artical_pattern.findall(html):
-        artical_type = False
-    elif artical_pattern.findall(html)[0] == 'Content-Type' or artical_pattern.findall(html)[0] == 'content-type':
-        artical_type = True
-
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
-    title = title_pattern.findall(html)[0].replace('\n', '')
+    title = unescape(title_pattern.findall(html)[0].replace('\n', ''))
     user_pattern = re.compile('https://(.*?).lofter')
     if sys.platform == 'darwin' or 'linux' in sys.platform:
         title = title.replace('/', '\\')
@@ -121,8 +114,6 @@ def _capture_blog(headers, url, hot_number, cfg):
 
     tag_pattern = re.compile('<meta name="Keywords" content="(.*?)"')
     tag_list = tag_pattern.findall(html)[0].split(',')
-    if not ((cfg.TARGET.ARTICAL and artical_type) or (cfg.TARGET.PICTURE and not artical_type)):
-        return 0
     if not hot_number or int(hot_number) < cfg.TARGET.HOT_THRE:
         return 0
     for want_title in cfg.TARGET.TITLE:
@@ -147,7 +138,7 @@ def person_blog(cfg, user):
     blog_url_pattern = re.compile(r's[\d]*\.permalink="([\w_]*)"')
     hot_pattern = re.compile('s[\d]*.noteCount=(\d*)')
 
-    POST_url = 'http://%s.lofter.com/dwr/call/plaincall/ArchiveBean.getArchivePostByTime.dwr' % user
+    POST_url = 'https://%s.lofter.com/dwr/call/plaincall/ArchiveBean.getArchivePostByTime.dwr' % user
     # 这是个人归档在下滑的时候的POST请求包
 
     POST_payload = _create_query_data(cfg.TYPE, blogid, _get_timestamp(cfg.TYPE, None, time_pattern), str(query_number))
@@ -166,7 +157,7 @@ def person_blog(cfg, user):
         if num_new_blogs:
             logger.info("=> NewBlog:{}\tTotalBlogs:{}".format(num_new_blogs, num_blogs))
             for blog, hot in zip(new_blogs, blogs_hot):
-                url = 'http://%s.lofter.com/post/%s' % (user, blog)
+                url = 'https://%s.lofter.com/post/%s' % (user, blog)
                 _capture_blog(headers, url, hot, cfg)
         if num_new_blogs != query_number:
             logger.info('================')

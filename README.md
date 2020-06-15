@@ -41,8 +41,6 @@ TYPE|tag|脚本运行模式，可选项有tag和USER，可以保存tag和保存u
 TAG|[]|如果选择了tag运行模式，那么在括号里填入目标tag|\['tag1', 'tag2'\]
 USER|[]|如果选择了USER运行模式，那么目标user|\['user1', 'user2'\]
 ------|target细节部分|-----------------|-------
-PICTURE|true|blog是图片的话是否保存|true
-ARTICAL|true|blog是文章的话是否保存|true
 HOT_THRE|0|高于多少热度的文章被保存|50
 TITLE| [] |标题中有什么内容的会被保存，这是list格式的配置，意味着可以有很多个与的目标|\['论坛体', 'abo'\]
 TAG_PLUS| [] |文章的tag中要有什么才会被保存。同样是list格式配置| \['三十天挑战'\]

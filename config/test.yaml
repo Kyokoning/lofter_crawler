@@ -4,8 +4,6 @@ TAG: ['sc']
 USER: []
 
 TARGET:
-  PICTURE: true
-  ARTICAL: true
   HOT_THRE: 0
   TITLE: []
   TAG_PLUS: []
