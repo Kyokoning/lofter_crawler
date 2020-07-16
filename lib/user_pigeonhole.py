@@ -88,21 +88,36 @@ def _create_headers(username):
     return headers
 
 def _get_html(url, data, headers):
-    try:
-        html = requests.post(url, data = data, headers = headers)
-    except Exception as e:
-        logger.info('=> get {} failed\n{}'.format(url, str(e)))
-        return None
-    finally:
-        pass
-    return html
+    i = 0
+    start = time.time()
+    while i<10:
+        try:
+            html = requests.post(url, data = data, headers = headers)
+            return html
+        except Exception as e:
+            i += 1
+            time.sleep(random.randint(0, 2))
+    end = time.time()
+    logger.error('=> network error, reconnection tried 10 times for {}s.'.format(end-start))
+    exit(0)
+
+def _get_html_blog(url, headers):
+    i=0
+    start = time.time()
+    while i<5:
+        try:
+            html = requests.get(url, headers, timeout=5).text
+            return html
+        except Exception as e:
+            i+=1
+    end = time.time()
+    logger.error('=> network error for get blog, reconnection tried 5 times for {}s.'.format(end-start))
+    return 0
 
 def _capture_blog(headers, url, hot_number, cfg):
     print(url)
-    try:
-        html = requests.get(url, headers, timeout=7).text
-    except Exception as e:
-        logger.error('=> get blog html failed.\n{}'.format(str(e)))
+    html=_get_html_blog(url, headers)
+    if html==0:
         return 0
 
     title_pattern = re.compile('<title>((?:\n|.)*?)</title>')
